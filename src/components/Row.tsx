@@ -22,7 +22,7 @@ const Row: FC<RowProps> = ({ title, fetchUrl, isLargeRow }) => {
 
   return (
     <Box ml={4} my={2}>
-      <Heading fontWeight="normal" fontSize="xl">
+      <Heading fontWeight="normal" fontSize="1.4rem" ml="inherit">
         {title}
       </Heading>
       <Flex overflowX="auto" padding={4}>
