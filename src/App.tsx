@@ -1,42 +1,28 @@
+import { Box, Heading } from "@chakra-ui/react";
 import React, { useState } from "react";
-import { Flex, Heading } from "@chakra-ui/react";
-import MoviesList from "./components/MoviesList";
+import Banner from "./components/Banner";
+import Row from "./components/Row";
+import requests from "./libs/requests";
 
 export default function App() {
-  const [movies, setMovies] = useState<any[]>([
-    {
-      Title: "Star Wars: Episode IV - A New Hope",
-      Year: "1977",
-      imdbID: "tt0076759",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BNzVlY2MwMjktM2E4OS00Y2Y3LWE3ZjctYzhkZGM3YzA1ZWM2XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
-    },
-    {
-      Title: "Star Wars: Episode V - The Empire Strikes Back",
-      Year: "1980",
-      imdbID: "tt0080684",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
-    },
-    {
-      Title: "Star Wars: Episode VI - Return of the Jedi",
-      Year: "1983",
-      imdbID: "tt0086190",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
-    },
-    {
-      Title: "Star Wars: Episode VII - The Force Awakens",
-      Year: "2015",
-      imdbID: "tt2488496",
-      Type: "movie",
-      Poster:
-        "https://m.media-amazon.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_SX300.jpg",
-    },
-  ]);
-
-  return <MoviesList movies={movies} />;
+  return (
+    <>
+      <Banner />
+      <Row
+        title="Netflix Originals"
+        isLargeRow
+        fetchUrl={requests.netflixOriginals}
+      />
+      <Row title="Trending now" fetchUrl={requests.trendingMovies} />
+      <Row title="Top rated" fetchUrl={requests.topRated} />
+      <Row title="Action movies" fetchUrl={requests.actionMovies} />
+      <Row title="Comedy movies" fetchUrl={requests.comedyMovies} />
+      <Row title="Romance movies" fetchUrl={requests.romanceMovies} />
+      <Row title="Horror movies" fetchUrl={requests.horrorMovies} />
+      <Row
+        title="Documentaries movies"
+        fetchUrl={requests.documentariesMovies}
+      />
+    </>
+  );
 }

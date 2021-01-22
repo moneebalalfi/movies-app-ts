@@ -6,12 +6,14 @@ const myCustomTheme = {
     global: {
       body: {
         bg: "bgColor",
+        color: "white",
+        fontWeight: "normal",
       },
     },
   },
   fonts: {
-    body: "'Roboto',system-ui, sans-serif",
-    heading: "'Roboto', serif",
+    body: "'Kanit', sans-serif, system-ui",
+    heading: "'Kanit', sans-serif",
   },
   colors: {
     transparent: "transparent",
@@ -21,6 +23,7 @@ const myCustomTheme = {
     bgColor: "#141414",
   },
   fontWeights: {
+    light: 300,
     normal: 400,
     medium: 500,
     bold: 700,
