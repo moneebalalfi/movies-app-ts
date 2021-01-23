@@ -22,72 +22,71 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <Flex alignItems="center" pos="fixed" w="100vw" top={4} left={0}>
-      <Box pos="fixed">
-        <Box pos="fixed" left={4}>
-          {<NLogo width="100" />}
-        </Box>
+    <Box pos="fixed" w="100%" top="0" left="0">
+      <Flex
+        bg="#141414"
+        alignItems="center"
+        justifyContent="space-between"
+        p={4}
+      >
+        <Flex alignItems="center">
+          <Box>{<NLogo width="100" />}</Box>
 
-        {/* Normal screen */}
-        <List
-          display={{ base: "none", md: "flex" }}
-          pos="fixed"
-          left={44}
-          alignItems="center"
-        >
-          <ListItem title="Home" />
-          <ListItem title="Tv shows" />
-          <ListItem title="Movies" />
-          <ListItem title="New & Popular" />
-        </List>
+          {/* Normal screen */}
+          <List
+            display={{ base: "none", md: "flex" }}
+            alignItems="center"
+            ml={14}
+          >
+            <ListItem title="Home" />
+            <ListItem title="Tv shows" />
+            <ListItem title="Movies" />
+            <ListItem title="New & Popular" />
+          </List>
 
-        {/* Base Screen */}
-        <Box
-          display={{ base: "block", md: "none" }}
-          pos="fixed"
-          left={44}
-          top={2}
-          alignItems="center"
-          onMouseEnter={() => setIsOpen(true)}
-          onMouseLeave={() => setIsOpen(false)}
-        >
-          <Menu isOpen={isOpen}>
-            <MenuButton
-              as={Button}
-              rightIcon={<IoMdArrowDropdown />}
-              bg="none"
-              _hover={{ bg: "none" }}
-              _expanded={{ bg: "none" }}
-              _focus={{ outline: 0, boxShadow: "none", bg: "none" }}
-            >
-              Browse
-            </MenuButton>
-            <MenuList
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              flexDirection="column"
-              bg="bgColor"
-              borderTop=".3rem solid white"
-              w="300px"
-            >
-              <MenuItem w="100%" textAlign="center">
-                Home
-              </MenuItem>
-              <MenuItem>Tv shows</MenuItem>
-              <MenuItem>Movies</MenuItem>
-              <MenuItem>New & Popular</MenuItem>
-            </MenuList>
-          </Menu>
-        </Box>
-      </Box>
+          {/* Base Screen */}
+          <Box
+            display={{ base: "block", md: "none" }}
+            alignItems="center"
+            ml={8}
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+          >
+            <Menu isOpen={isOpen}>
+              <MenuButton
+                as={Button}
+                rightIcon={<IoMdArrowDropdown />}
+                bg="none"
+                _hover={{ bg: "none" }}
+                _expanded={{ bg: "none" }}
+                _focus={{ outline: 0, boxShadow: "none", bg: "none" }}
+              >
+                Browse
+              </MenuButton>
+              <MenuList
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                flexDirection="column"
+                bg="bgColor"
+                borderTop=".3rem solid white"
+                w="300px"
+              >
+                <MenuItem w="100%" textAlign="center">
+                  Home
+                </MenuItem>
+                <MenuItem>Tv shows</MenuItem>
+                <MenuItem>Movies</MenuItem>
+                <MenuItem>New & Popular</MenuItem>
+              </MenuList>
+            </Menu>
+          </Box>
+        </Flex>
 
-      <Box pos="fixed">
         <List
           display={{ base: "flex", md: "flex" }}
           alignItems="center"
           justifyContent="space-between"
-          pos="fixed"
           right={{ base: 4, md: 12 }}
         >
           <ListItem isIcon>
@@ -103,8 +102,8 @@ const Navbar = () => {
             <Avatar bg="teal.500" size="100%" />
           </ListItem>
         </List>
-      </Box>
-    </Flex>
+      </Flex>
+    </Box>
   );
 };
 
