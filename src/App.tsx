@@ -1,12 +1,14 @@
 import { Box, Heading } from "@chakra-ui/react";
 import React, { useState } from "react";
 import Banner from "./components/Banner";
+import Navbar from "./components/Navbar";
 import Row from "./components/Row";
 import requests from "./libs/requests";
 
 export default function App() {
   return (
     <>
+      <Navbar />
       <Banner />
       <Row
         title="Netflix Originals"
