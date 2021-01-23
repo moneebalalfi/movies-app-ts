@@ -1,12 +1,12 @@
-import { ListItem } from "@chakra-ui/react";
+import { ListItem as ChakraListItem } from "@chakra-ui/react";
 import React, { FC } from "react";
 interface MenuItemProps {
   title?: string;
   isIcon?: boolean;
 }
-const MenuItem: FC<MenuItemProps> = ({ children, title, isIcon }) => {
+const ListItem: FC<MenuItemProps> = ({ children, title, isIcon }) => {
   return (
-    <ListItem
+    <ChakraListItem
       mr={4}
       w={isIcon ? { base: "23px", md: "30px" } : ""}
       cursor="pointer"
@@ -15,8 +15,8 @@ const MenuItem: FC<MenuItemProps> = ({ children, title, isIcon }) => {
     >
       {title}
       {children}
-    </ListItem>
+    </ChakraListItem>
   );
 };
 
-export default MenuItem;
+export default ListItem;

@@ -6,6 +6,7 @@ import { ImInfo } from "react-icons/im";
 import requests from "../libs/requests";
 import truncate from "../helpers/truncate";
 import Overlay from "./Overlay";
+import getRandomMovie from "../helpers/getRandomMovie";
 
 const Banner = () => {
   const [movie, setMovie] = useState<TMovie>();
@@ -13,10 +14,9 @@ const Banner = () => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(requests.trendingMovies);
-      const movie =
-        data.results[Math.floor(Math.random() * (data.results.length - 1))];
+
+      const movie = getRandomMovie(data.results);
       setMovie(movie);
-      console.log(movie);
     };
 
     getData();
@@ -26,12 +26,13 @@ const Banner = () => {
       as="header"
       bgImage={`url(${ImgBaseUrl}${movie?.backdrop_path})`}
       bgSize="cover"
+      backgroundPosition={{ base: "center", md: "unset" }}
       objectFit="contain"
       height="500px"
       alignItems="center"
     >
       <Overlay>
-        <Box className="contents" ml={12} mt={20}>
+        <Box ml={{ base: 8, md: 12 }} mt={24}>
           <Heading as="h1" fontSize={{ base: "2rem", md: "4rem" }}>
             {movie?.title || movie?.original_title || movie?.name}
           </Heading>
@@ -44,7 +45,7 @@ const Banner = () => {
             maxW="360px"
             maxH="100px"
           >
-            {truncate(movie?.overview!, 150)}
+            {truncate(movie?.overview!, 180)}
           </Text>
           <Stack isInline fontWeight="normal" mt={4}>
             <Button
