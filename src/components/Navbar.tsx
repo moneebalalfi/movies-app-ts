@@ -1,35 +1,24 @@
-import {
-  Avatar,
-  Box,
-  Flex,
-  Icon,
-  List,
-  ListItem,
-  Stack,
-  Wrap,
-  WrapItem,
-} from "@chakra-ui/react";
+import { Avatar, Box, Flex, List, Wrap } from "@chakra-ui/react";
 import React from "react";
-import { ImSearch } from "react-icons/im";
 import { BsFillBellFill } from "react-icons/bs";
 import { GiPresent } from "react-icons/gi";
-import { AiOutlineUser } from "react-icons/ai";
+import { ImSearch } from "react-icons/im";
 import MenuItem from "./MenuItem";
 import NLogo from "./NLogo";
 
 const Navbar = () => {
   return (
-    <Flex alignItems="center" pos="fixed" w="100vw" p={4}>
-      <Box pos="fixed" right={4} top={4}>
-        <Box p={4} pos="fixed" left={4} top={0}>
+    <Flex alignItems="center" pos="fixed" w="100vw" top={4} left={0}>
+      <Box pos="fixed">
+        <Box pos="fixed" left={4}>
           {<NLogo width="100" />}
         </Box>
 
         <List
-          display="flex"
-          justifyContent="space-between"
+          display={{ base: "none", md: "flex" }}
           pos="fixed"
           left={44}
+          alignItems="center"
         >
           <MenuItem title="Home" />
           <MenuItem title="Tv shows" />
@@ -38,20 +27,28 @@ const Navbar = () => {
         </List>
       </Box>
 
-      <Wrap justify="center" align="center" pos="fixed" right={12} top={4}>
-        <MenuItem>
-          <ImSearch size="30" />
-        </MenuItem>
-        <MenuItem>
-          <GiPresent size="30" />
-        </MenuItem>
-        <MenuItem>
-          <BsFillBellFill size="30" />
-        </MenuItem>
-        <MenuItem>
-          <Avatar bg="teal.500" size="md" />
-        </MenuItem>
-      </Wrap>
+      <Box pos="fixed">
+        <List
+          display={{ base: "flex", md: "flex" }}
+          alignItems="center"
+          justifyContent="space-between"
+          pos="fixed"
+          right={{ base: 4, md: 12 }}
+        >
+          <MenuItem isIcon>
+            <ImSearch size="100%" />
+          </MenuItem>
+          <MenuItem isIcon>
+            <GiPresent size="100%" />
+          </MenuItem>
+          <MenuItem isIcon>
+            <BsFillBellFill size="100%" />
+          </MenuItem>
+          <MenuItem isIcon>
+            <Avatar bg="teal.500" size="100%" />
+          </MenuItem>
+        </List>
+      </Box>
     </Flex>
   );
 };

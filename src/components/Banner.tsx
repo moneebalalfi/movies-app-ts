@@ -32,14 +32,14 @@ const Banner = () => {
     >
       <Overlay>
         <Box className="contents" ml={12} mt={20}>
-          <Heading as="h1" fontSize="4rem">
+          <Heading as="h1" fontSize={{ base: "2rem", md: "4rem" }}>
             {movie?.title || movie?.original_title || movie?.name}
           </Heading>
           <Text
             w="45rem"
             lineHeight="1.3"
             pt="1rem"
-            fontSize="1rem"
+            fontSize={{ base: ".8rem", md: "1rem" }}
             fontWeight="medium"
             maxW="360px"
             maxH="100px"
@@ -52,7 +52,7 @@ const Banner = () => {
               variant="sold"
               bg="white"
               color="black"
-              w="140px"
+              w={{ base: "130px", md: "150px" }}
             >
               Play
             </Button>
@@ -61,7 +61,7 @@ const Banner = () => {
               bg="rgba(109,109,110,0.7)"
               color="white"
               fontWeight="medium"
-              w="120px"
+              w={{ base: "120px", md: "140px" }}
             >
               More Info
             </Button>
