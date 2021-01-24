@@ -2,13 +2,13 @@ import {
   Avatar,
   Box,
   Button,
+  Fade,
   Flex,
   List,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
-  Wrap,
 } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import { BsFillBellFill } from "react-icons/bs";
@@ -20,19 +20,32 @@ import NLogo from "./NLogo";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 140) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    });
+  }, []);
 
   return (
-    <Box pos="fixed" w="100%" top="0" left="0">
+    <Box pos="fixed" w="100%" top="0" left="0" zIndex="9999">
       <Flex
-        bg="#141414"
+        bg={`${isScrolled ? "#141414" : ""}`}
         alignItems="center"
         justifyContent="space-between"
         p={4}
+        transition="all .3s"
       >
+        {/* LeftSide Box */}
         <Flex alignItems="center">
-          <Box>{<NLogo width="100" />}</Box>
+          <Box width={{ base: "70px", md: "100px" }}>{<NLogo />}</Box>
 
-          {/* Normal screen */}
+          {/* Normal screen Navbar*/}
           <List
             display={{ base: "none", md: "flex" }}
             alignItems="center"
@@ -44,11 +57,11 @@ const Navbar = () => {
             <ListItem title="New & Popular" />
           </List>
 
-          {/* Base Screen */}
+          {/* Base Screen Menu*/}
           <Box
             display={{ base: "block", md: "none" }}
             alignItems="center"
-            ml={8}
+            ml={{ base: 4, sm: 6 }}
             onMouseEnter={() => setIsOpen(true)}
             onMouseLeave={() => setIsOpen(false)}
           >
@@ -83,6 +96,7 @@ const Navbar = () => {
           </Box>
         </Flex>
 
+        {/* RightSide Box */}
         <List
           display={{ base: "flex", md: "flex" }}
           alignItems="center"

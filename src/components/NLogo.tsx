@@ -1,15 +1,10 @@
 import React, { FC } from "react";
 
-interface NLogoProps {
-  width: string;
-  height?: string;
-}
-
-const NLogo: FC<NLogoProps> = ({ width }) => {
+const NLogo: FC = () => {
   return (
     <svg
       viewBox="0.238 0.034 919.406 248.488"
-      width={width}
+      width="100%"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

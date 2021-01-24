@@ -17,6 +17,7 @@ const Banner = () => {
 
       const movie = getRandomMovie(data.results);
       setMovie(movie);
+      console.log(movie);
     };
 
     getData();
@@ -24,7 +25,7 @@ const Banner = () => {
   return (
     <Flex
       as="header"
-      bgImage={`url(${ImgBaseUrl}${movie?.backdrop_path})`}
+      bgImage={`url(${ImgBaseUrl}${movie?.backdrop_path!})`}
       bgSize="cover"
       backgroundPosition={{ base: "center", md: "unset" }}
       objectFit="contain"
